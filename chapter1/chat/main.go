@@ -10,7 +10,7 @@ import (
 
 //templ1は１つのテンプレートを表します
 type templateHandler struct {
-	once     sync.Once
+	once     sync.Once //複数から呼び出されても関数が1度しか実行されないことを保証する
 	filename string
 	templ    *template.Template
 }
