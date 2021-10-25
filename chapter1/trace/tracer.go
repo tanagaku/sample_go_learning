@@ -22,3 +22,12 @@ func (t *tracer) Trace(a ...interface{}) {
 func New(w io.Writer) Tracer {
 	return &tracer{out: w}
 }
+
+type nilTracer struct{}
+
+func (t *nilTracer) Trace(a ...interface{}) {}
+
+//OffはTraceメソッドの呼び出しを無視するTracerをかえします
+func Off() Tracer {
+	return &nilTracer{}
+}
