@@ -4,7 +4,9 @@ import (
 	"flag"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
+	"sample_go_learning/chapter1/trace"
 	"sync"
 	"text/template"
 )
@@ -32,6 +34,7 @@ func main() {
 	var addr = flag.String("addr", ":8080", "アプリケーションのアドレス")
 	flag.Parse() //フラグを解釈
 	r := newRoom()
+	r.tracer = trace.New(os.Stdout)
 	//ルート
 	http.Handle("/", &templateHandler{filename: "chat.html"})
 	http.Handle("/room", r)
