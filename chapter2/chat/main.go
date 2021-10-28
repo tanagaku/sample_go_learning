@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"sample_go_learning/chapter1/trace"
+	"sample_go_learning/chapter2/trace"
 	"sync"
 	"text/template"
 
