@@ -51,7 +51,7 @@ func main() {
 		github.New("クライアントID", "秘密の値", "http://localhost:8080/auth/callback/github"),
 		google.New("クライアントID", "秘密の値", "http://localhost:8080/auth/callback/google"),
 	)
-	r := newRoom(UseGravatar)
+	r := newRoom(UseFileSystemAvatar)
 	r.tracer = trace.New(os.Stdout)
 
 	http.Handle("/chat", MustAuth(&templateHandler{filename: "chat.html"}))
