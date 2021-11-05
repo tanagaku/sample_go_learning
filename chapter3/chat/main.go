@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"sample_go_learning/chapter2/trace"
+	"sample_go_learning/chapter3/trace"
 	"sync"
 	"text/template"
 
@@ -22,6 +22,13 @@ type templateHandler struct {
 	once     sync.Once //複数から呼び出されても関数が1度しか実行されないことを保証する
 	filename string
 	templ    *template.Template
+}
+
+//現在アクティブなAvatarの実装
+var avatars Avatar = TryAvatars{
+	UseFileSystemAvatar,
+	UseAuthAvatar,
+	UseGravatar,
 }
 
 // ServerHTTPはHTTPリクエストを処理します
