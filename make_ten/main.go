@@ -4,7 +4,16 @@ import (
 	"errors"
 	"flag"
 	"fmt"
+	"go/token"
+	"go/types"
 	"strconv"
+)
+
+const (
+	plus     = "+"
+	minus    = "-"
+	multiply = "×"
+	division = "÷"
 )
 
 /*条件:コマンドライン引数は4つであること
@@ -19,7 +28,11 @@ func main() {
 		return
 	}
 
-	result := make_ten(nums)
+	result, err := make_ten(nums)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	fmt.Println(result)
 }
@@ -42,6 +55,16 @@ func validation(args []string) ([]int64, error) {
 	return nums, nil
 }
 
-func make_ten(nums []int64) string {
-	return strconv.FormatInt(nums[0], 10)
+func make_ten(nums []int64) (string, error) {
+
+	test := "1+2+3+4"
+	tv, err := types.Eval(token.NewFileSet(), nil, token.NoPos, test)
+	if err != nil {
+		return "", errors.New(err.Error())
+	}
+
+	if tv.Value.String() == "10" {
+		return test, nil
+	}
+	return "", nil
 }
