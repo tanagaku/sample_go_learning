@@ -29,6 +29,6 @@ func Test_validation(t *testing.T) {
 	args = []string{"1", "2", "3", "4"}
 	result, err = validation(args)
 	assert.Nil(t, err)
-	assert.Equal(t, []int64{1, 2, 3, 4}, result)
+	assert.Equal(t, args, result)
 
 }
