@@ -78,7 +78,6 @@ func Permute(nums []int) [][]string {
 	for i, vals := range ret {
 		for _, v := range vals {
 			strs[i] = append(strs[i], makeOpe(v))
-			fmt.Println(strs[i])
 		}
 	}
 	return strs
