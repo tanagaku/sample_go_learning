@@ -54,6 +54,10 @@ func validation(args []string) ([]string, error) {
 
 func make_ten(nums []string) (string, error) {
 
+	nums, err := convertFloatArray(nums)
+	if err != nil {
+		return "", err
+	}
 	opes := []string{plus, minus, multiply, division}
 	for _, v := range PermuteWithRepetition(opes, 3) {
 		ope := nums[0] + v[0] + nums[1] + v[1] + nums[2] + v[2] + nums[3]
@@ -85,4 +89,17 @@ func PermuteWithRepetition(opes []string, getn int) [][]string {
 	}
 
 	return results
+}
+
+func convertFloatArray(nums []string) ([]string, error) {
+	var ss []string
+	for _, n := range nums {
+		s, err := strconv.ParseFloat(n, 64)
+		if err != nil {
+			return nil, err
+		}
+
+		ss = append(ss, strconv.FormatFloat(s, 'f', -1, 64))
+	}
+	return ss, nil
 }
