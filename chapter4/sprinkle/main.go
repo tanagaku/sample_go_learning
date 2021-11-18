@@ -13,7 +13,7 @@ import (
 )
 
 const otherWord = "otherWord"
-const transformYaml = "transform.yaml"
+const transformYaml = "../sprinkle/transform.yaml"
 
 func main() {
 	rand.Seed(time.Now().UTC().UnixNano())
