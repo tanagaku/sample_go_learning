@@ -44,6 +44,7 @@ func WithLogger(log *log.Logger) Option {
 	return loggerOption{Log: log}
 }
 
+//引数が可変なのがミソ
 func Open(opts ...Option) (interface{}, error) {
 	options := options{}
 
