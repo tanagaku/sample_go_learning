@@ -57,4 +57,9 @@ func main() {
 		counts[vote]++
 		return nil
 	}))
+
+	if err := q.ConnectToNSQLookupd("localhost:4161"); err != nil {
+		fatal(err)
+		return
+	}
 }
