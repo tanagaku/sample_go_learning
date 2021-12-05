@@ -32,7 +32,6 @@ func main() {
 	}
 	defer closedb()
 
-	//処理を開始します
 	votes := make(chan string) //投稿結果のためのチャネル
 	publisherStoppedChan := publishVotes(votes)
 	twitterStoppedChan := startTwitterStream(stopChan, votes)
