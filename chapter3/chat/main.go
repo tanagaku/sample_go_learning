@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"sample_go_learning/chapter3/trace"
 	"sync"
 	"text/template"
+
+	"github.com/tanagaku/sample_go_learning/chapter3/trace"
 
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/facebook"
