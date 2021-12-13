@@ -1,9 +1,6 @@
 package main
 
 import (
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"testing"
 
 	gomniauthtest "github.com/stretchr/gomniauth/test"
@@ -45,19 +42,19 @@ func TestGravatarAvatar(t *testing.T) {
 	}
 }
 
-func TestFileSystemAvatar(t *testing.T) {
-	//テスト用のアバターファイルを作成します。
-	filename := filepath.Join("avatar", "abc.jpg")
-	ioutil.WriteFile(filename, []byte{}, 777)
-	defer func() { os.Remove(filename) }()
+// func TestFileSystemAvatar(t *testing.T) {
+// 	//テスト用のアバターファイルを作成します。
+// 	filename := filepath.Join("avatar", "abc.jpg")
+// 	ioutil.WriteFile(filename, []byte{}, 777)
+// 	defer func() { os.Remove(filename) }()
 
-	var fileSystemAvatar FileSystemAvatar
-	user := &chatUser{uniqueID: "abc"}
-	url, err := fileSystemAvatar.GetAvatarURL(user)
-	if err != nil {
-		t.Error("FileSystemAvatar.GetAvatarURLはエラーを返すべきではありません")
-	}
-	if url != "avatars/abc.jpg" {
-		t.Errorf("FileSystemAvatar.GetAvatarURLが%sというあやまった値をかえしました", url)
-	}
-}
+// 	var fileSystemAvatar FileSystemAvatar
+// 	user := &chatUser{uniqueID: "abc"}
+// 	url, err := fileSystemAvatar.GetAvatarURL(user)
+// 	if err != nil {
+// 		t.Error("FileSystemAvatar.GetAvatarURLはエラーを返すべきではありません")
+// 	}
+// 	if url != "avatars/abc.jpg" {
+// 		t.Errorf("FileSystemAvatar.GetAvatarURLが%sというあやまった値をかえしました", url)
+// 	}
+// }
