@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: before path test
-        run: ls /home/runner/go/src/github.com/gorilla/websocket
+        run: ls /home/runner/go/src/github.com/
       - name: build
         run: go build ./...
 
