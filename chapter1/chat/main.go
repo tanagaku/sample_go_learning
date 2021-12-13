@@ -6,9 +6,10 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"sample_go_learning/chapter1/trace"
 	"sync"
 	"text/template"
+
+	"github.com/tanagaku/sample_go_learning/chapter1/trace"
 )
 
 //templ1は１つのテンプレートを表します
