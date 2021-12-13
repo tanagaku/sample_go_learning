@@ -1,6 +1,6 @@
 package main
 
-import factory "sample_go_learning/gof/factory/framework"
+import factory "github.com/tanagaku/sample_go_learning/gof/factory/framework"
 
 func startMain(factoryObject factory.FactoryInterface) {
 	card1 := factoryObject.Create("TEST Taro")
