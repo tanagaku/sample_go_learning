@@ -3,7 +3,8 @@ package main
 import (
 	"log"
 	"net/http"
-	"sample_go_learning/chapter1/trace"
+
+	"github.com/tanagaku/sample_go_learning/chapter1/trace"
 
 	"github.com/gorilla/websocket"
 	"github.com/stretchr/objx"
