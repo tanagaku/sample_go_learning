@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"net/http"
 
 	"gopkg.in/mgo.v2"
@@ -67,5 +66,6 @@ func handlePollsPost(w http.ResponseWriter, r *http.Request) {
 	respond(w, r, http.StatusCreated, nil)
 }
 func handlePolllsDelete(w http.ResponseWriter, r *http.Request) {
-	respondErr(w, r, http.StatusInternalServerError, errors.New("未実装です"))
+	db := GetVar(r, "db").(*mgo.Database)
+
 }
