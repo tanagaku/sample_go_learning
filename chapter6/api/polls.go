@@ -25,6 +25,11 @@ func handlePolls(w http.ResponseWriter, r *http.Request) {
 	case "DELETE":
 		handlePolllsDelete(w, r)
 		return
+
+	case "OPTIONS":
+		w.Header().Add("Access-Control-Allow-Methods", "DELETE")
+		respond(w, r, http.StatusOK, nil)
+		return
 	}
 	//未対応のhttpメソッド
 	respondHTTPErr(w, r, http.StatusNotFound)
@@ -67,5 +72,15 @@ func handlePollsPost(w http.ResponseWriter, r *http.Request) {
 }
 func handlePolllsDelete(w http.ResponseWriter, r *http.Request) {
 	db := GetVar(r, "db").(*mgo.Database)
-
+	c := db.C("polls")
+	p := NewPath(r.URL.Path)
+	if !p.HasID() {
+		respondErr(w, r, http.StatusMethodNotAllowed, "すべての調査呼応目を削除することはできません")
+		return
+	}
+	if err := c.RemoveId(bson.ObjectIdHex(p.ID)); err != nil {
+		respondErr(w, r, http.StatusInternalServerError, "調査項目の削除に失敗しました", err)
+		return
+	}
+	respond(w, r, http.StatusOK, nil) //成功
 }
