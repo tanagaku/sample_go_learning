@@ -1,9 +1,10 @@
 package meander_test
 
 import (
+	"sample_go_learning/chapter7/meander"
 	"testing"
-	"go get github.com/cheekybits/is"
-	"github.com/tanagaku/sample_go_learning/chapter7/meander"
+
+	"github.com/cheekybits/is"
 )
 
 func TestCostValues(t *testing.T) {
@@ -14,4 +15,14 @@ func TestCostValues(t *testing.T) {
 	is.Equal(int(meander.Cost3), 3)
 	is.Equal(int(meander.Cost4), 4)
 	is.Equal(int(meander.Cost5), 5)
+}
+
+func TestCostString(t *testing.T) {
+	is := is.New(t)
+
+	is.Equal(int(meander.Cost1.String()), "$")
+	is.Equal(int(meander.Cost2.String()), "$$")
+	is.Equal(int(meander.Cost3.String()), "$$$")
+	is.Equal(int(meander.Cost4.String()), "$$$$")
+	is.Equal(int(meander.Cost5.String()), "$$$$$")
 }
