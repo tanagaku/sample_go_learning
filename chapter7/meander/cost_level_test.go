@@ -2,7 +2,7 @@ package meander_test
 
 import (
 	"testing"
-"go get github.com/cheekybits/is"
+	"go get github.com/cheekybits/is"
 	"github.com/tanagaku/sample_go_learning/chapter7/meander"
 )
 
