@@ -4,25 +4,21 @@ import (
 	"sample_go_learning/chapter7/meander"
 	"testing"
 
-	"github.com/cheekybits/is"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestCostValues(t *testing.T) {
-	is := is.New(t)
-
-	is.Equal(int(meander.Cost1), 1)
-	is.Equal(int(meander.Cost2), 2)
-	is.Equal(int(meander.Cost3), 3)
-	is.Equal(int(meander.Cost4), 4)
-	is.Equal(int(meander.Cost5), 5)
+	assert.Equal(t, int(meander.Cost1), 1)
+	assert.Equal(t, int(meander.Cost2), 2)
+	assert.Equal(t, int(meander.Cost3), 3)
+	assert.Equal(t, int(meander.Cost4), 4)
+	assert.Equal(t, int(meander.Cost5), 5)
 }
 
 func TestCostString(t *testing.T) {
-	is := is.New(t)
-
-	is.Equal(int(meander.Cost1.String()), "$")
-	is.Equal(int(meander.Cost2.String()), "$$")
-	is.Equal(int(meander.Cost3.String()), "$$$")
-	is.Equal(int(meander.Cost4.String()), "$$$$")
-	is.Equal(int(meander.Cost5.String()), "$$$$$")
+	assert.Equal(t, meander.Cost1.String(), "$")
+	assert.Equal(t, meander.Cost2.String(), "$$")
+	assert.Equal(t, meander.Cost3.String(), "$$$")
+	assert.Equal(t, meander.Cost4.String(), "$$$$")
+	assert.Equal(t, meander.Cost5.String(), "$$$$$")
 }
