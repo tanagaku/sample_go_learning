@@ -1,10 +1,10 @@
 package meander_test
 
 import (
-	"sample_go_learning/chapter7/meander"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/tanagaku/sample_go_learning/chapter7/meander"
 )
 
 func TestCostValues(t *testing.T) {
