@@ -1,10 +1,9 @@
 package meander_test
 
 import (
-	"sample_go_learning/chapter7/meander"
 	"testing"
-
-	"github.com/cheekybits/is"
+"go get github.com/cheekybits/is"
+	"github.com/tanagaku/sample_go_learning/chapter7/meander"
 )
 
 func TestCostValues(t *testing.T) {

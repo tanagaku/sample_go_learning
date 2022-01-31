@@ -5,10 +5,11 @@ import (
 	"net/http"
 	"runtime"
 
-	"github.com/oreilly-japan/go-programming-blueprints/chapter7/meander"
+	"github.com/tanagaku/sample_go_learning/chapter7/meander"
 )
 
 func main() {
+
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	//meander.APIKey = "TODO"
 	http.HandleFunc("/journeys", func(w http.ResponseWriter, r *http.Request) {
