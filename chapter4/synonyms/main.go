@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/oreilly-japan/go-programming-blueprints/chapter4/thesaurus"
+	"github.com/tanagaku/sample_go_learning/chapter4/thesaurus"
 )
 
 func main() {
