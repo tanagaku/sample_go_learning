@@ -4,8 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"runtime"
-
-	"github.com/tanagaku/sample_go_learning/chapter7/meander"
+	"sample_go_learning/chapter7/meander"
 )
 
 func main() {
