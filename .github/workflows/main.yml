@@ -13,6 +13,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  #URL for posting job results to slack
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # 共通処理
@@ -48,6 +52,14 @@ jobs:
         run: go get -v -t -d ./...
       - name: build
         run: go build ./...
+      # 失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.0.2
+        if: failure()
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: Test Failure
+          SLACK_COLOR: danger
 
   # testを通す
   test:
@@ -59,3 +71,21 @@ jobs:
         run: go get -v -t -d ./...
       - name: test
         run: go test ./... -v
+
+      # 成功時はこちらのステップが実行される
+      - name: Slack Notification on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: Test Success
+          SLACK_COLOR: good
+
+      # 失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.0.2
+        if: failure()
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: Test Failure
+          SLACK_COLOR: danger
