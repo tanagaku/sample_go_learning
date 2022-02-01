@@ -58,7 +58,7 @@ jobs:
         if: failure()
         env:
           SLACK_CHANNEL: alert_ci
-          SLACK_TITLE: Test Failure
+          SLACK_TITLE: Build Failure
           SLACK_COLOR: danger
 
   # testを通す
