@@ -1,6 +1,2 @@
 github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0Ufc=
 github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
-github.com/tanagaku/sample_go_learning v0.0.0-20220110082920-6d29f530d280 h1:9QuAWOe9ebsejRS3l4tSnjxW3g9uk76Cnv/yniBtVdQ=
-github.com/tanagaku/sample_go_learning v0.0.0-20220110082920-6d29f530d280/go.mod h1:KfNLDBzKM8ljm5HQUMvIqsSRiyKVDxo04mrZIu936XI=
-github.com/tanagaku/sample_go_learning v0.0.0-20220131142001-3597f3f4510d h1:z5qxPtGND8x9khu/DQRjH7AHmNTHW2GSeHs96LJAljc=
-github.com/tanagaku/sample_go_learning v0.0.0-20220131142001-3597f3f4510d/go.mod h1:KfNLDBzKM8ljm5HQUMvIqsSRiyKVDxo04mrZIu936XI=
