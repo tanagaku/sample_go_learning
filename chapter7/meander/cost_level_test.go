@@ -22,3 +22,11 @@ func TestCostString(t *testing.T) {
 	assert.Equal(t, meander.Cost4.String(), "$$$$")
 	assert.Equal(t, meander.Cost5.String(), "$$$$$")
 }
+
+func TestParseCost(t *testing.T) {
+	assert.Equal(t, meander.Cost1, meander.ParseCost("$"))
+	assert.Equal(t, meander.Cost2, meander.ParseCost("$$"))
+	assert.Equal(t, meander.Cost3, meander.ParseCost("$$$"))
+	assert.Equal(t, meander.Cost4, meander.ParseCost("$$$$"))
+	assert.Equal(t, meander.Cost5, meander.ParseCost("$$$$$"))
+}
