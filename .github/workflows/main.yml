@@ -41,6 +41,14 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
              ${{ runner.os }}-go-
+     # 失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.2.0
+        if: failure()
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: SetUp Failure
+          SLACK_COLOR: danger
 
 # buildテスト
   build:
