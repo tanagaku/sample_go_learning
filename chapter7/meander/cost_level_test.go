@@ -30,3 +30,20 @@ func TestParseCost(t *testing.T) {
 	assert.Equal(t, meander.Cost4, meander.ParseCost("$$$$"))
 	assert.Equal(t, meander.Cost5, meander.ParseCost("$$$$$"))
 }
+
+func TestParseCostRange(t *testing.T) {
+	var l *meander.CostRange
+	l = meander.ParseCostRange("$$...$$$")
+	assert.Equal(t, l.From, meander.Cost2)
+	assert.Equal(t, l.To, meander.Cost3)
+	l = meander.ParseCostRange("$...$$$$$")
+	assert.Equal(t, l.From, meander.Cost1)
+	assert.Equal(t, l.To, meander.Cost5)
+}
+
+func TestCostRangeString(t *testing.T) {
+	assert.Equal(t, "$$...$$$$", (&meander.CostRange{
+		From: meander.Cost2,
+		To:   meander.Cost4,
+	}).String())
+}
