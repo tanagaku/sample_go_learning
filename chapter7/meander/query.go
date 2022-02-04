@@ -8,6 +8,14 @@ type Place struct {
 	Vicinity        string         `json:"result"`
 }
 
+type Query struct {
+	Lat          float64
+	Lng          float64
+	Journey      []string
+	Radius       int
+	CostRangeStr string
+}
+
 type googleResponse struct {
 	Results []*Place `json:"results"`
 }
