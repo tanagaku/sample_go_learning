@@ -49,6 +49,7 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: SetUp Failure
           SLACK_COLOR: danger
+          SLACK_LINK_NAMES: "@tanagaku"
 
 # buildテスト
   build:
@@ -68,6 +69,7 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Build Failure
           SLACK_COLOR: danger
+          SLACK_LINK_NAMES: "@tanagaku"
 
   # testを通す
   test:
@@ -88,6 +90,7 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Success
           SLACK_COLOR: good
+          SLACK_LINK_NAMES: "@tanagaku"
 
       # 失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
@@ -97,3 +100,4 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
+          SLACK_LINK_NAMES: "@tanagaku"
