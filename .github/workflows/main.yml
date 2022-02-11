@@ -90,7 +90,8 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Success
           SLACK_COLOR: good
-          SLACK_LINK_NAMES: "@tanagaku"
+          SLACK_LINK_NAMES: true
+          SLACK_MESSAGE: '@tanagaku'
 
       # 失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
