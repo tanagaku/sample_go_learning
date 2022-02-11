@@ -49,7 +49,6 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: SetUp Failure
           SLACK_COLOR: danger
-          SLACK_LINK_NAMES: "@tanagaku"
 
 # buildテスト
   build:
@@ -69,8 +68,7 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Build Failure
           SLACK_COLOR: danger
-          SLACK_LINK_NAMES: "@tanagaku"
-
+       
   # testを通す
   test:
     needs: setup
@@ -90,9 +88,7 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Success
           SLACK_COLOR: good
-          SLACK_LINK_NAMES: true
-          SLACK_MESSAGE: '@tanagaku'
-
+    
       # 失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
@@ -101,4 +97,4 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
-          SLACK_LINK_NAMES: "@tanagaku"
+  
