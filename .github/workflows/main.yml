@@ -97,4 +97,13 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
+
+  # protoc 実行
+  protoc:
+    needs: [build,test]
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: protoc
+        run: ls
   
