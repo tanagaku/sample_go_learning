@@ -11,6 +11,6 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: protoc
-        run: >
+        run: |
           cd ./grpc/proto
           pwd
