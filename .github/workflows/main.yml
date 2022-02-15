@@ -50,7 +50,7 @@ jobs:
           SLACK_TITLE: SetUp Failure
           SLACK_COLOR: danger
 
-# buildテスト
+  # buildテスト
   build:
     needs: setup
     runs-on: ubuntu-latest
