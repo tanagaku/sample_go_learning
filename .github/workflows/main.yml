@@ -105,5 +105,5 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: protoc
-        run: ls
+        run: ls -R #for f in *.proto; do protoc  --go_out=:./pb --go_opt=module=github.com/tanagaku/sample_go_learning/grpc/proto/pb  $f; done
   
