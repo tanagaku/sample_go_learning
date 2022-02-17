@@ -1,12 +1,12 @@
 syntax = "proto3";
-option go_package = "github.com/tanagaku/sample_go_learning/grpc/proto";
+option go_package = "github.com/tanagaku/sample_go_learning/grpc/proto/pb";
 
 service SampleService {
     rpc GetSample (SampleRequest) returns (SampleResponse){}
 }
 
 message SampleRequest {
-    int32 id = 2;
+    int32 id = 1;
 }
 
 message SampleResponse {
