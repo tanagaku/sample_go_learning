@@ -104,5 +104,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Genereate code for squzy-storage protofile
-        run: ls
+        run: protoc -I./ --go_opt=paths=source_relative --go_out=./pb ./grpc/proto/sample.proto
   
