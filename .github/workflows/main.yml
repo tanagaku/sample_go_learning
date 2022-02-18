@@ -106,5 +106,5 @@ jobs:
       - name: Genereate code for squzy-storage protofile
         uses: PxyUp/protoc-actions@v3.0.0
         with:
-          path: -I./ --go_opt=paths=source_relative --go_out=./generated example/v1/test.proto
+          path: -I./ --go_opt=paths=source_relative --go_out=./pb grpc/proto/sample.proto
   
