@@ -97,12 +97,3 @@ jobs:
           SLACK_CHANNEL: alert_ci
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
-
-  # protoc 実行
-  protoc:
-    needs: [build,test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Genereate code for squzy-storage protofile
-        run: protoc -I./ --go_opt=paths=source_relative --go_out=./pb ./grpc/proto/sample.proto
-  
