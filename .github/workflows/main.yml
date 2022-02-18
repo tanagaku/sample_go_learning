@@ -106,5 +106,5 @@ jobs:
       - name: Genereate code for squzy-storage protofile
         uses: PxyUp/protoc-actions@v3.0.0
         with:
-          path: ls
+          path: pwd
   
