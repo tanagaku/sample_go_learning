@@ -104,5 +104,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Genereate code for squzy-storage protofile
-        run: pwd
+        run: ls
   
