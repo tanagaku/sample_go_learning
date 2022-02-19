@@ -129,3 +129,20 @@ jobs:
         env:
           GEN_OUT_DIR: grpc/proto/pb
           PROTO_DIR: grpc/proto
+      # 成功時はこちらのステップが実行される
+      - name: Slack Notification on Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: proto Success
+          SLACK_COLOR: good
+    
+      # 失敗時はこちらのステップが実行される
+      - name: Slack Notification on Failure
+        uses: rtCamp/action-slack-notify@v2.2.0
+        if: failure()
+        env:
+          SLACK_CHANNEL: alert_ci
+          SLACK_TITLE: proto Failure
+          SLACK_COLOR: danger
