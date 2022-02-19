@@ -123,8 +123,8 @@ jobs:
           --go_out=$GEN_OUT_DIR \ 
           $(find $PROTO_DIR -type f -name '*.proto')          
         env:
-          GEN_OUT_DIR: grpc/proto/pb
-          PROTO_DIR: grpc/proto
+          GEN_OUT_DIR: ./grpc/proto/pb
+          PROTO_DIR: ./grpc/proto
       # 成功時はこちらのステップが実行される
       - name: Slack Notification on Success
         if: success()
