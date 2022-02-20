@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = "github.com/tanagaku/sample_go_learning/grpc/proto/pb";
+option go_package = "./;pb";
 
 service SampleService {
     rpc GetSample (SampleRequest) returns (SampleResponse){}
