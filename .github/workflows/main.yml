@@ -122,7 +122,7 @@ jobs:
            protoc -I=$PROTO_DIR \ 
            --go_out=$GEN_OUT_DIR \ 
            $PROTO_DIR/sample.proto
-           $(find $PROTO_DIR -type f -name '*.proto')       
+        # $(find $PROTO_DIR -type f -name '*.proto')       
         env:
           GEN_OUT_DIR: grpc/proto/pb
           PROTO_DIR: grpc/proto
