@@ -79,16 +79,7 @@ jobs:
         run: go get -v -t -d ./...
       - name: test
         run: go test ./... -v
-
-      # 成功時はこちらのステップが実行される
-      - name: Slack Notification on Success
-        if: success()
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_CHANNEL: alert_ci
-          SLACK_TITLE: Test Success
-          SLACK_COLOR: good
-    
+        
       # 失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
         uses: rtCamp/action-slack-notify@v2.2.0
@@ -98,7 +89,7 @@ jobs:
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
   proto_checks:
-    name: proto lint, breaking changes detection and generating stubs from protos
+    name: generate protos
     needs: [build,test]
     runs-on: ubuntu-latest
     steps:
@@ -119,10 +110,7 @@ jobs:
           go get google.golang.org/grpc/cmd/protoc-gen-go-grpc          
       - name: Generating protos
         run: |
-           protoc -I=$PROTO_DIR \ 
-           --go_out=$GEN_OUT_DIR \ 
-           $PROTO_DIR/sample.proto
-           $(find $PROTO_DIR -type f -name '*.proto')       
+            protoc -I=$PROTO_DIR --go_out=$GEN_OUT_DIR $PROTO_DIR/*.proto
         env:
           GEN_OUT_DIR: grpc/proto/pb
           PROTO_DIR: grpc/proto
