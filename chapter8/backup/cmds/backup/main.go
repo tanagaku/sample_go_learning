@@ -9,10 +9,10 @@ import (
 	"github.com/matryer/filedb"
 )
 
-type path struct (
+type path struct {
 	Path string
 	Hash string
-)
+}
 
 func main() {
 	var fatalErr error
@@ -43,7 +43,7 @@ func main() {
 		return
 	}
 
-	switch strings.ToLower(args[0]){
+	switch strings.ToLower(args[0]) {
 	case "list":
 	case "add":
 	case "remove":
