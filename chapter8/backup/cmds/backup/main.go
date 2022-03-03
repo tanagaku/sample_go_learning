@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"flag"
+	"fmt"
 	"log"
 	"strings"
 
@@ -37,7 +39,7 @@ func main() {
 		fatalErr = err
 	}
 	defer db.Close()
-	_, err = db.C("paths")
+	col, err := db.C("paths")
 	if err != nil {
 		fatalErr = err
 		return
@@ -45,6 +47,16 @@ func main() {
 
 	switch strings.ToLower(args[0]) {
 	case "list":
+		var path path
+		col.ForEach(func(i int, data []byte) bool {
+			err := json.Unmarshal(data, &path)
+			if err != nil {
+				fatalErr = err
+				return true
+			}
+			fmt.Printf("= %s\n", path)
+			return false
+		})
 	case "add":
 	case "remove":
 	}
