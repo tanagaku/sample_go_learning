@@ -8,6 +8,11 @@ import (
 	"github.com/tanagaku/sample_go_learning/chapter8/backup"
 )
 
+type path struct {
+	Path string
+	Hash string
+}
+
 func main() {
 	var fatalErr error
 	defer func() {
