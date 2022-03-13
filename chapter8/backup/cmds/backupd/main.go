@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"errors"
 	"flag"
 	"log"
 
@@ -26,7 +28,7 @@ func main() {
 		dbpath  = flag.String("db", "./db", "filedbデータベースへのパス")
 	)
 
-	_ = &backup.Monitor{
+	m := &backup.Monitor{
 		Destination: *archive,
 		Archiver:    backup.ZIP,
 		//Path:        make(map[string]string{}),
@@ -37,10 +39,26 @@ func main() {
 		return
 	}
 	defer db.Close()
-	/**col*/ _, err = db.C("paths")
+	col, err := db.C("paths")
 	if err != nil {
 		fatalErr = err
 		return
 	}
 
+	var path path
+	col.ForEach(func(_ int, data []byte) bool {
+		if err := json.Unmarshal(data, &path); err != nil {
+			fatalErr = err
+			return true
+		}
+		m.Paths[path.Path] = path.Hash
+		return false //処理を中断します
+	})
+	if fatalErr != nil {
+		return
+	}
+	if len(m.Paths) < 1 {
+		fatalErr = errors.New("パスがりません。backupツールを使って追加してください")
+		return
+	}
 }
