@@ -4,7 +4,12 @@ import (
 	"encoding/json"
 	"errors"
 	"flag"
+	"fmt"
 	"log"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/matryer/filedb"
 	"github.com/tanagaku/sample_go_learning/chapter8/backup"
@@ -61,4 +66,20 @@ func main() {
 		fatalErr = errors.New("パスがりません。backupツールを使って追加してください")
 		return
 	}
+	//check(m, col)
+	signalChan := make(chan os.Signal, 1)
+	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
+Loop:
+	for {
+		select {
+		case <-time.After(time.Duration(1 /***interval*/) * time.Second):
+			//check(m,col)
+		case <-signalChan:
+			//終了
+			fmt.Println()
+			log.Printf("終了します...")
+			break Loop
+		}
+	}
+
 }
