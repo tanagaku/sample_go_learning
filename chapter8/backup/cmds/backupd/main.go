@@ -28,9 +28,9 @@ func main() {
 		}
 	}()
 	var (
-		//	interval = flag.Int("interval", 10, "チェックの感覚(秒単位")
-		archive = flag.String("archive", "archive", "アーカイブの保存先")
-		dbpath  = flag.String("db", "./db", "filedbデータベースへのパス")
+		interval = flag.Int("interval", 10, "チェックの感覚(秒単位")
+		archive  = flag.String("archive", "archive", "アーカイブの保存先")
+		dbpath   = flag.String("db", "./db", "filedbデータベースへのパス")
 	)
 
 	m := &backup.Monitor{
@@ -72,8 +72,8 @@ func main() {
 Loop:
 	for {
 		select {
-		case <-time.After(time.Duration(1 /***interval*/) * time.Second):
-			//check(m,col)
+		case <-time.After(time.Duration(*interval) * time.Second):
+			check(m, col)
 		case <-signalChan:
 			//終了
 			fmt.Println()
@@ -81,5 +81,6 @@ Loop:
 			break Loop
 		}
 	}
-
 }
+
+func check(m *backup.Monitor, col *filedb.C) {}
