@@ -1,0 +1,6 @@
+syntax = "proto3";
+option go_package = "./;pb";
+
+message BaseRequest {
+    string request_id =1;
+}

@@ -1,12 +1,15 @@
 syntax = "proto3";
 option go_package = "./;pb";
 
+import "common.proto";
+
 service SampleService {
     rpc GetSample (SampleRequest) returns (SampleResponse){}
 }
 
 message SampleRequest {
-    int32 id = 1;
+    BaseRequest request = 1;
+    int32 id = 2;
 }
 
 message SampleResponse {
