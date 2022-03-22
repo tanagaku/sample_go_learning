@@ -1,7 +1,8 @@
 syntax = "proto3";
+package sample;
 option go_package = "./;pb";
 
-import "common.proto";
+import "grpc/proto/common.proto";
 
 service SampleService {
     rpc GetSample (SampleRequest) returns (SampleResponse){}
