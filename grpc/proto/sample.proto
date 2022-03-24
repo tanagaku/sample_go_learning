@@ -1,5 +1,5 @@
 syntax = "proto3";
-package sample;
+package grpc.proto.sample;
 option go_package = "./;pb";
 
 import "grpc/proto/common.proto";
@@ -9,7 +9,7 @@ service SampleService {
 }
 
 message SampleRequest {
-    BaseRequest request = 1;
+    common.BaseRequest request = 1;
     int32 id = 2;
 }
 

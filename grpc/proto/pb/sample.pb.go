@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.27.1
 // 	protoc        v3.19.4
-// source: sample.proto
+// source: grpc/proto/sample.proto
 
 package pb
 
@@ -25,13 +25,14 @@ type SampleRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id int32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Request *BaseRequest `protobuf:"bytes,1,opt,name=request,proto3" json:"request,omitempty"`
+	Id      int32        `protobuf:"varint,2,opt,name=id,proto3" json:"id,omitempty"`
 }
 
 func (x *SampleRequest) Reset() {
 	*x = SampleRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_sample_proto_msgTypes[0]
+		mi := &file_grpc_proto_sample_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +45,7 @@ func (x *SampleRequest) String() string {
 func (*SampleRequest) ProtoMessage() {}
 
 func (x *SampleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_sample_proto_msgTypes[0]
+	mi := &file_grpc_proto_sample_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +58,14 @@ func (x *SampleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SampleRequest.ProtoReflect.Descriptor instead.
 func (*SampleRequest) Descriptor() ([]byte, []int) {
-	return file_sample_proto_rawDescGZIP(), []int{0}
+	return file_grpc_proto_sample_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *SampleRequest) GetRequest() *BaseRequest {
+	if x != nil {
+		return x.Request
+	}
+	return nil
 }
 
 func (x *SampleRequest) GetId() int32 {
@@ -79,7 +87,7 @@ type SampleResponse struct {
 func (x *SampleResponse) Reset() {
 	*x = SampleResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_sample_proto_msgTypes[1]
+		mi := &file_grpc_proto_sample_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -92,7 +100,7 @@ func (x *SampleResponse) String() string {
 func (*SampleResponse) ProtoMessage() {}
 
 func (x *SampleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_sample_proto_msgTypes[1]
+	mi := &file_grpc_proto_sample_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -105,7 +113,7 @@ func (x *SampleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SampleResponse.ProtoReflect.Descriptor instead.
 func (*SampleResponse) Descriptor() ([]byte, []int) {
-	return file_sample_proto_rawDescGZIP(), []int{1}
+	return file_grpc_proto_sample_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *SampleResponse) GetId() int32 {
@@ -122,57 +130,69 @@ func (x *SampleResponse) GetName() string {
 	return ""
 }
 
-var File_sample_proto protoreflect.FileDescriptor
+var File_grpc_proto_sample_proto protoreflect.FileDescriptor
 
-var file_sample_proto_rawDesc = []byte{
-	0x0a, 0x0c, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x1f,
-	0x0a, 0x0d, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64, 0x22,
-	0x34, 0x0a, 0x0e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69,
-	0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0x3f, 0x0a, 0x0d, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x53,
-	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x2e, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x53, 0x61, 0x6d,
-	0x70, 0x6c, 0x65, 0x12, 0x0e, 0x2e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x0f, 0x2e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x07, 0x5a, 0x05, 0x2e, 0x2f, 0x3b, 0x70, 0x62, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+var file_grpc_proto_sample_proto_rawDesc = []byte{
+	0x0a, 0x17, 0x67, 0x72, 0x70, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x73, 0x61, 0x6d,
+	0x70, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11, 0x67, 0x72, 0x70, 0x63, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x1a, 0x17, 0x67, 0x72,
+	0x70, 0x63, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x59, 0x0a, 0x0d, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x38, 0x0a, 0x07, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x42, 0x61, 0x73, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x07, 0x72, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02, 0x69, 0x64,
+	0x22, 0x34, 0x0a, 0x0e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x32, 0x63, 0x0a, 0x0d, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65,
+	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x52, 0x0a, 0x09, 0x47, 0x65, 0x74, 0x53, 0x61,
+	0x6d, 0x70, 0x6c, 0x65, 0x12, 0x20, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x2e, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x2e, 0x53, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x21, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x2e, 0x73, 0x61, 0x6d, 0x70, 0x6c, 0x65, 0x2e, 0x53, 0x61, 0x6d, 0x70, 0x6c,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x42, 0x07, 0x5a, 0x05, 0x2e,
+	0x2f, 0x3b, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_sample_proto_rawDescOnce sync.Once
-	file_sample_proto_rawDescData = file_sample_proto_rawDesc
+	file_grpc_proto_sample_proto_rawDescOnce sync.Once
+	file_grpc_proto_sample_proto_rawDescData = file_grpc_proto_sample_proto_rawDesc
 )
 
-func file_sample_proto_rawDescGZIP() []byte {
-	file_sample_proto_rawDescOnce.Do(func() {
-		file_sample_proto_rawDescData = protoimpl.X.CompressGZIP(file_sample_proto_rawDescData)
+func file_grpc_proto_sample_proto_rawDescGZIP() []byte {
+	file_grpc_proto_sample_proto_rawDescOnce.Do(func() {
+		file_grpc_proto_sample_proto_rawDescData = protoimpl.X.CompressGZIP(file_grpc_proto_sample_proto_rawDescData)
 	})
-	return file_sample_proto_rawDescData
+	return file_grpc_proto_sample_proto_rawDescData
 }
 
-var file_sample_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_sample_proto_goTypes = []interface{}{
-	(*SampleRequest)(nil),  // 0: SampleRequest
-	(*SampleResponse)(nil), // 1: SampleResponse
+var file_grpc_proto_sample_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_grpc_proto_sample_proto_goTypes = []interface{}{
+	(*SampleRequest)(nil),  // 0: grpc.proto.sample.SampleRequest
+	(*SampleResponse)(nil), // 1: grpc.proto.sample.SampleResponse
+	(*BaseRequest)(nil),    // 2: grpc.proto.common.BaseRequest
 }
-var file_sample_proto_depIdxs = []int32{
-	0, // 0: SampleService.GetSample:input_type -> SampleRequest
-	1, // 1: SampleService.GetSample:output_type -> SampleResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+var file_grpc_proto_sample_proto_depIdxs = []int32{
+	2, // 0: grpc.proto.sample.SampleRequest.request:type_name -> grpc.proto.common.BaseRequest
+	0, // 1: grpc.proto.sample.SampleService.GetSample:input_type -> grpc.proto.sample.SampleRequest
+	1, // 2: grpc.proto.sample.SampleService.GetSample:output_type -> grpc.proto.sample.SampleResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_sample_proto_init() }
-func file_sample_proto_init() {
-	if File_sample_proto != nil {
+func init() { file_grpc_proto_sample_proto_init() }
+func file_grpc_proto_sample_proto_init() {
+	if File_grpc_proto_sample_proto != nil {
 		return
 	}
+	file_grpc_proto_common_proto_init()
 	if !protoimpl.UnsafeEnabled {
-		file_sample_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_grpc_proto_sample_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SampleRequest); i {
 			case 0:
 				return &v.state
@@ -184,7 +204,7 @@ func file_sample_proto_init() {
 				return nil
 			}
 		}
-		file_sample_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_grpc_proto_sample_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SampleResponse); i {
 			case 0:
 				return &v.state
@@ -201,18 +221,18 @@ func file_sample_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_sample_proto_rawDesc,
+			RawDescriptor: file_grpc_proto_sample_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_sample_proto_goTypes,
-		DependencyIndexes: file_sample_proto_depIdxs,
-		MessageInfos:      file_sample_proto_msgTypes,
+		GoTypes:           file_grpc_proto_sample_proto_goTypes,
+		DependencyIndexes: file_grpc_proto_sample_proto_depIdxs,
+		MessageInfos:      file_grpc_proto_sample_proto_msgTypes,
 	}.Build()
-	File_sample_proto = out.File
-	file_sample_proto_rawDesc = nil
-	file_sample_proto_goTypes = nil
-	file_sample_proto_depIdxs = nil
+	File_grpc_proto_sample_proto = out.File
+	file_grpc_proto_sample_proto_rawDesc = nil
+	file_grpc_proto_sample_proto_goTypes = nil
+	file_grpc_proto_sample_proto_depIdxs = nil
 }

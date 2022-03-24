@@ -1,5 +1,5 @@
 syntax = "proto3";
-package common;
+package grpc.proto.common;
 option go_package = "./;pb";
 
 message BaseRequest {
